@@ -6,6 +6,8 @@ import alanBtn from "@alan-ai/alan-sdk-web";
 import { NewsCards, Modal } from "./components";
 import useStyles from "./styles";
 
+const ALAN_API_KEY = process.env.REACT_APP_ALAN_API_KEY;
+
 const App = () => {
   const [activeArticle, setActiveArticle] = useState(0);
   const [newsArticles, setNewsArticles] = useState([]);
@@ -15,7 +17,7 @@ const App = () => {
 
   useEffect(() => {
     alanBtn({
-      key: "/stage",
+      key: ALAN_API_KEY,
       onCommand: ({ command, articles, number }) => {
         if (command === "newHeadlines") {
           setNewsArticles(articles);
@@ -39,6 +41,8 @@ const App = () => {
           } else {
             alanBtn().playText("Please try that again...");
           }
+        } else if (command === "deactivate") {
+          alanBtn().deactivate();
         }
       },
     });
@@ -66,7 +70,7 @@ const App = () => {
           </div>
         ) : null}
         <img
-          src="https://alan.app/voice/images/previews/preview.jpg"
+          src={require("./logo.png")}
           className={classes.alanLogo}
           alt="logo"
         />
