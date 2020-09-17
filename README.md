@@ -1,6 +1,6 @@
 # AI NEWS READER
 
-AI News Reader created using React and Firebase that can be contolled using voice commands like
+AI News Reader created using React and Firebase that can be controlled using voice commands like
 
 1. Give me the latest news
 2. Give me the latest Technology news
